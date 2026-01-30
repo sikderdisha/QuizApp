@@ -1,0 +1,367 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Fira Sans", sans-serif;
+}
+body{
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+    height: 100vh;
+}
+.myquiz{
+    height: 500px;
+    width: 300px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    overflow: hidden; /* so image corners match rounded corners */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.myquiz .img {
+    padding:20px 10px;
+    flex: 1;
+}
+.myquiz .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+.myquiz .text {
+    flex: 1; 
+    padding: 10px 15px;
+    text-align: center;
+}
+.myquiz .text h2 {
+    margin-bottom: 5px;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 28px;
+}
+.myquiz .text p {
+    padding-top: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+}
+.myquiz .mybtn {
+    padding: 20px;
+    text-align: center;
+}
+.mybtn button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color:rgb(90, 90, 206);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.mybtn button:hover{
+    background-color:tomato;
+    color: #0a0909;
+
+}
+/* rule box  */
+.rulebox{
+    display: none;
+    height: 500px;
+    width: 300px;
+    background-color: white;
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.rulebox.activeInfo{
+    display: flex;
+}
+
+.title{
+    padding: 20px;
+    text-align: center;
+}
+.rules-list ul{
+    padding: 10px 20px;
+}
+.rules-list ul li{
+    list-style: none;
+    padding-bottom: 10px;
+    line-height: 32px;
+}
+.rules-list .fa-solid{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(119, 242, 119);
+    color: white;
+}
+.rules-list span{
+    color: rgb(90, 90, 206);
+}
+.rule-btn{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 0;
+}
+.rule-btn button{
+    font-size: 16px;
+    font-weight: 600;
+    background-color:rgb(90, 90, 206);
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    border-radius: 57px;
+    transition: 0.3s ease-in-out;
+   
+}
+.rule-btn button:hover{
+     background-color:tomato;
+    color: #0a0909;
+
+}
+/* choose category  */
+.option-container{
+    height: 500px;
+    width: 300px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+
+}
+.option-container .title h2{
+    font-size: 18px;
+    font-weight: 600;
+}
+.options ul{
+    padding: 20px;
+    text-align: center;
+}
+.list-box{
+    background-color: #c5cdf0;
+    margin: 20px 0;
+    border-radius: 16px;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    transition: 0.3s ease;
+}
+.list-box:hover{
+    background-color: rgb(90, 90, 206);
+    color: white;
+    transform: scale(1.03);
+}
+.option-container .mybtn{
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 25px;
+}
+/* academic-container  */
+.academic-container{
+    height: 500px;
+    width: 300px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+.options-card{
+    text-align: center;
+    display: grid;
+    grid-template-rows: repeat(3,1fr);
+    grid-template-columns: repeat(2,1fr);
+    grid-template-areas: "card1 card2"
+                         "card3 card4"
+                         "card5 card6";
+    margin: 5px;
+}
+.card{
+    border: 1px solid #ccc;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    padding: 30px;
+}
+
+.card:hover{
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    transform: translateY(-2px);
+    background-color: #c5cdf0;
+}
+
+.card1{
+    grid-area: card1;
+}
+.card2{
+    grid-area: card2;
+}
+.card3{
+    grid-area: card3;
+}
+.card4{
+    grid-area: card4;
+}
+.card5{
+    grid-area: card5;
+}
+.card6{
+    grid-area: card6;
+}
+.academic-container .mybtn{
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 25px;
+}
+/* general knowledge  */
+.general-container{
+    height: 500px;
+    width: 300px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+.general-container .mybtn{
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 25px;
+}
+/* Tech knowledge  */
+.tech-container{
+    height: 500px;
+    width: 300px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+.tech-container .mybtn{
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 25px;
+}
+/* questions  */
+.questions{
+     height: 500px;
+    width: 300px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+.heading{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px 10px 20px;
+}
+.time{
+    display: flex;
+    justify-content: center;
+    width: 120px;
+    padding: 2px 5px;
+}
+.time .time-left{
+   flex: 2; 
+   background-color: #afbcf3;
+   padding: 3px;
+}
+.time .seconds{
+flex: 1;
+background-color: #555;
+text-align: center;
+padding: 3px;
+color: white;   
+}
+.time_loading{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    background-color:#007bff;
+}
+.section{
+    margin: 20px 0 50px 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+}
+.myOptions{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;   
+}
+.questionOptions{
+    border:1px solid #84c5fe;
+    background: aliceblue;
+    height: 35px;
+    padding: 8px 15px;
+    transition: 0.3s ease;
+    border-radius: 5px;
+    cursor: pointer;
+   
+}
+.questionOptions span{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.questionOptions:hover{
+     box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+     transform: translateY(-2px);
+     background: rgb(156, 203, 247);
+}
+footer{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid lightblue;
+    padding: 20px;
+}
+.nextBtn{
+   padding: 5px 10px;
+   background-color: #afbcf3;
+   border: none;
+   box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+   transition: 0.3s ease-in-out;
+   border-radius: 5px;
+}
+.nextBtn:hover{
+     box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+     transform: translateY(-2px);
+    background: rgb(29,194,194);
+}
+/* শুধু প্রথম page ছাড়া বাকি সব hide */
+.rulebox,
+.option-container,
+.academic-container,
+.general-container,
+.tech-container,
+.questions {
+    display: none;
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Oswald:wght@200..700&family=Satisfy&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- index page  -->
+    <div class="myquiz">
+        <div class="img">
+            <img src="./images/choose.svg" alt="">
+
+        </div>
+        <div class="text">
+            <h2>QuickThink</h2>
+            <p>Test your knowledge and challenge yourself with fun quizzes on a variety of topics. Learn, compete, and track your progress all in one app!</p>
+
+        </div>
+        <div class="mybtn">
+            <button>Start Quiz</button>
+        </div>
+    </div> 
+    
+    <!-- rule box -->
+     <div class="rulebox">
+        <div class="title">
+        <h2>Rules for attend Quiz</h2>
+        <br><hr>
+        </div>
+        <div class="rules-list">
+            <ul>
+                <li> <i class="fa-solid fa-check"></i> You will have only <span>15 seconds</span> for each question.</li>
+                <li> <i class="fa-solid fa-check"></i> Once you select a answer it can't be undo.</li>
+                <li> <i class="fa-solid fa-check"></i> You can't select any option once time goes off.</li>
+                <li> <i class="fa-solid fa-check"></i> You will get points on the basis of your correct answer.</li>
+            </ul>
+        </div>
+        <div class="rule-btn">
+            <button>Quite App</button>
+            <button>Continue</button>
+        </div>
+     </div> 
+
+    <!-- option box -->
+     <div class="option-container">
+        <div class="title">
+            <h2>Choose Your Quiz Category</h2>
+        <br><hr>
+
+
+        </div>
+        <div class="options">
+            <ul>
+                <li class="list-box">Academic Subjects</li>
+                <li class="list-box">General Knowledge</li>
+                <li class="list-box">Technology & Programming</li>
+            </ul>
+        </div>
+         <div class="mybtn">
+            <button>Exit Quiz</button>
+        </div>
+     </div>
+     <!-- academic -->
+      <div class="academic-container">
+                <div class="title">
+            <h2>Academic Subjects</h2>
+        <br><hr>
+
+
+        </div>
+        <div class="options-card">
+            <div class="card card1">Mathematics</div>
+            <div class="card card2">Chemistry</div>
+            <div class="card card3">Physics</div>
+            <div class="card card4">Biology</div>
+            <div class="card card5">ICT</div>
+            <div class="card card6">English</div>
+            
+        </div>
+         <div class="mybtn">
+            <button>Previous</button>
+        </div>
+      </div>
+    
+    <!-- general  -->
+      <div class="general-container">
+                <div class="title">
+            <h2>General Knowledge</h2>
+        <br><hr>
+        </div>
+        <div class="options">
+            <ul>
+                <li class="list-box">Current Affairs</li>
+                <li class="list-box">History</li>
+                <li class="list-box">Geography</li>
+            </ul>
+        </div>
+         <div class="mybtn">
+            <button>Previous</button>
+        </div>
+      </div> 
+    <!-- Technology & Programming  -->
+     <div class="tech-container">
+                <div class="title">
+            <h2>Technology & Programming</h2>
+        <br><hr>
+
+
+        </div>
+         <div class="options">
+            <ul>
+                <li class="list-box">Programming Basics</li>
+                <li class="list-box">Web Development</li>
+                <li class="list-box">Computer Fundamentals</li>
+            </ul>
+        </div>
+         <div class="mybtn">
+            <button>Previous</button>
+        </div>
+      </div> 
+    
+    <!-- questions  -->
+      <div class="questions">
+        <div class="heading">
+            <div class="start">Start Quiz</div>
+            <div class="time">
+                <div class="time-left">Time left</div>
+                <div class="seconds">15</div>
+            </div>
+        </div>
+        <!-- time loading  -->
+         <div class="time_loading"></div>
+         <!-- question  -->
+          <div class="section">
+            <div>
+                <span>
+                    1. What does a variable do in programming?
+                </span>
+            </div>
+            <!-- options  -->
+             <div class="myOptions">
+
+                <div class="questionOptions">
+                    <span>
+                        Stores data values
+                        <i class="fa-solid fa-check"></i>
+                    </span>
+                </div>
+
+                <div class="questionOptions">
+                    <span>
+                        Displays output
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </span>
+                </div>
+
+                <div class="questionOptions">
+                    <span>
+                        Runs a loop
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </span>
+                </div>
+
+                <div class="questionOptions">
+                    <span>
+                        Fixes errors
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </span>
+                </div>
+
+            </div>
+        </div> --> -->
+    <footer>
+            <div class="totalQ">
+                <p>1 of 5 questions</p>
+            </div>
+            <button class="nextBtn">Next</button>
+        </footer>
+
+    </div>
+    <script src="script.js">
+
+    </script>
+    </body>
+</html>
