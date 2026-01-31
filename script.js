@@ -46,13 +46,12 @@ continueBtn.onclick = () => {
 // Quit button
 quitBtn.onclick = () => location.reload();
 
-// ================= Option Category Click =================
+// ================= Option Container Click =================
 document.querySelector(".option-container").addEventListener("click", e => {
   if (e.target.classList.contains("list-box")) {
     const category = e.target.innerText.trim();
     optionContainer.style.display = "none";
 
-    // Show relevant container
     if (category === "Academic Subjects") academicContainer.style.display = "flex";
     if (category === "General Knowledge") generalContainer.style.display = "flex";
     if (category === "Technology & Programming") techContainer.style.display = "flex";
@@ -67,8 +66,25 @@ document.querySelectorAll(".academic-container .card").forEach(card => {
   };
 });
 
+// ================= General Knowledge Quiz Start =================
+document.querySelectorAll(".general-container .list-box").forEach(box => {
+  box.onclick = () => {
+    const subject = box.innerText.trim(); // Current Affairs, History, Geography
+    startQuiz(subject);
+  };
+});
+
+// ================= Technology & Programming Quiz Start =================
+document.querySelectorAll(".tech-container .list-box").forEach(box => {
+  box.onclick = () => {
+    const subject = box.innerText.trim(); // Programming Basics, Web Development, Computer Fundamentals
+    startQuiz(subject);
+  };
+});
+
 // ================= Quiz Data =================
 const quizData = {
+  // Academic Subjects
   Mathematics: [
     { q: "What is 5 + 3?", options: ["5", "8", "10", "15"], answer: 1 },
     { q: "Square root of 16?", options: ["2", "4", "6", "8"], answer: 1 },
@@ -110,6 +126,52 @@ const quizData = {
     { q: "Antonym of Dark?", options: ["Light", "Bright", "Shiny", "Both"], answer: 0 },
     { q: "Past tense of Go?", options: ["Went", "Gone", "Go", "Goes"], answer: 0 },
     { q: "Plural of Child?", options: ["Children", "Childs", "Childes", "Childer"], answer: 0 }
+  ],
+
+  // General Knowledge
+  "Current Affairs": [
+    { q: "Who is the current UN Secretary-General?", options: ["Antonio Guterres", "Ban Ki-moon", "Kofi Annan", "Boutros Boutros-Ghali"], answer: 0 },
+    { q: "Which country recently hosted the COP26 summit?", options: ["UK", "USA", "France", "Germany"], answer: 0 },
+    { q: "Which organization issues the World Economic Outlook?", options: ["IMF", "UN", "World Bank", "OECD"], answer: 0 },
+    { q: "Which country won the 2022 FIFA World Cup?", options: ["Argentina", "France", "Brazil", "Germany"], answer: 0 },
+    { q: "Who is the current US President?", options: ["Joe Biden", "Donald Trump", "Barack Obama", "George Bush"], answer: 0 }
+  ],
+  History: [
+    { q: "Who was the first President of the USA?", options: ["George Washington", "Abraham Lincoln", "John Adams", "Thomas Jefferson"], answer: 0 },
+    { q: "In which year did World War II end?", options: ["1945", "1944", "1939", "1950"], answer: 0 },
+    { q: "Who discovered America?", options: ["Christopher Columbus", "Leif Erikson", "Amerigo Vespucci", "Vasco da Gama"], answer: 0 },
+    { q: "Which empire built the Colosseum?", options: ["Roman Empire", "Greek Empire", "Ottoman Empire", "Persian Empire"], answer: 0 },
+    { q: "Who was Napoleon Bonaparte?", options: ["French military leader", "English king", "German chancellor", "Italian artist"], answer: 0 }
+  ],
+  Geography: [
+    { q: "Capital of France?", options: ["Paris", "Berlin", "Madrid", "Rome"], answer: 0 },
+    { q: "Largest ocean?", options: ["Pacific", "Atlantic", "Indian", "Arctic"], answer: 0 },
+    { q: "Highest mountain in the world?", options: ["Everest", "K2", "Kangchenjunga", "Lhotse"], answer: 0 },
+    { q: "Longest river?", options: ["Nile", "Amazon", "Yangtze", "Mississippi"], answer: 0 },
+    { q: "Which continent is Egypt in?", options: ["Africa", "Asia", "Europe", "Australia"], answer: 0 }
+  ],
+
+  // Technology & Programming
+  "Programming Basics": [
+    { q: "What does HTML stand for?", options: ["HyperText Markup Language", "Hyperlinks Text Mark Language", "HighText Markup Language", "None"], answer: 0 },
+    { q: "CSS is used for?", options: ["Styling Web Pages", "Programming Logic", "Database Management", "Networking"], answer: 0 },
+    { q: "JS stands for?", options: ["JavaScript", "Java System", "JustScript", "None"], answer: 0 },
+    { q: "Which tag is used for headings in HTML?", options: ["<h1>", "<p>", "<div>", "<span>"], answer: 0 },
+    { q: "Which property changes text color in CSS?", options: ["color", "font-size", "background", "border"], answer: 0 }
+  ],
+  "Web Development": [
+    { q: "Which language is used for backend?", options: ["Node.js", "HTML", "CSS", "Photoshop"], answer: 0 },
+    { q: "What is React?", options: ["JS library", "CSS framework", "Backend language", "Database"], answer: 0 },
+    { q: "Bootstrap is?", options: ["CSS framework", "JS library", "HTML tag", "Database"], answer: 0 },
+    { q: "DOM stands for?", options: ["Document Object Model", "Data Object Model", "Document Output Method", "Database Object Model"], answer: 0 },
+    { q: "Which tag is used to create links in HTML?", options: ["<a>", "<link>", "<div>", "<span>"], answer: 0 }
+  ],
+  "Computer Fundamentals": [
+    { q: "What is CPU?", options: ["Central Processing Unit", "Computer Personal Unit", "Control Processing Unit", "Central Performance Unit"], answer: 0 },
+    { q: "RAM is used for?", options: ["Temporary storage", "Permanent storage", "Processing graphics", "Network routing"], answer: 0 },
+    { q: "ROM stands for?", options: ["Read Only Memory", "Random Operating Memory", "Rapid Output Memory", "Run Once Memory"], answer: 0 },
+    { q: "Motherboard is?", options: ["Main circuit board", "Memory stick", "Storage device", "Peripheral"], answer: 0 },
+    { q: "Binary system uses how many digits?", options: ["2", "8", "10", "16"], answer: 0 }
   ]
 };
 
@@ -204,6 +266,11 @@ function nextQuestion() {
     showResult();
   }
 }
+
+// ================= Option Container Exit Button =================
+document.querySelector(".option-container .mybtn button").onclick = () => {
+    location.reload(); // Exit button click → Reload page
+};
 
 // Show result
 function showResult() {
