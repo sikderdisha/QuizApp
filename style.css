@@ -200,6 +200,7 @@ body{
     box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     transform: translateY(-2px);
     background-color: #c5cdf0;
+    cursor: pointer;
 }
 
 .card1{
@@ -364,4 +365,34 @@ footer{
 .tech-container,
 .questions {
     display: none;
+}
+/* icon default hidden */
+.questionOptions i {
+    display: none;
+    font-size: 16px;
+}
+
+/* correct */
+.questionOptions.correct {
+    background-color: #d4edda;
+    border-color: #28a745;
+}
+.questionOptions.correct .fa-check {
+    display: inline-block;
+    color: #28a745;
+}
+
+/* wrong */
+.questionOptions.wrong {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+}
+.questionOptions.wrong .fa-circle-xmark {
+    display: inline-block;
+    color: #dc3545;
+}
+
+/* disable further clicks */
+.questionOptions.disabled {
+    pointer-events: none;
 }
