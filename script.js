@@ -1,7 +1,10 @@
 // ================= Containers =================
 const quizBox = document.querySelector(".myquiz");
 const ruleBox = document.querySelector(".rulebox");
+const optionContainer = document.querySelector(".option-container");
 const academicContainer = document.querySelector(".academic-container");
+const generalContainer = document.querySelector(".general-container");
+const techContainer = document.querySelector(".tech-container");
 const questionPage = document.querySelector(".questions");
 const questionText = document.querySelector(".section span");
 const optionBoxes = document.querySelectorAll(".questionOptions");
@@ -12,19 +15,57 @@ const seconds = document.querySelector(".seconds");
 const startBtn = document.querySelector(".myquiz .mybtn button");
 const continueBtn = document.querySelector(".rule-btn button:nth-child(2)");
 const quitBtn = document.querySelector(".rule-btn button:nth-child(1)");
-const nextBtn = document.querySelector(".nextBtn");
 
-// ================= Previous Button =================
+// ================= Previous Buttons =================
 document.querySelector(".academic-container .mybtn button").onclick = () => {
-  academicContainer.style.display = "none"; // Academic container hide
-  document.querySelector(".option-container").style.display = "flex"; // Show Category selection page
+  academicContainer.style.display = "none";
+  optionContainer.style.display = "flex";
 };
 
 document.querySelector(".general-container .mybtn button").onclick = () => {
   generalContainer.style.display = "none";
-  document.querySelector(".option-container").style.display = "flex";
+  optionContainer.style.display = "flex";
 };
 
+document.querySelector(".tech-container .mybtn button").onclick = () => {
+  techContainer.style.display = "none";
+  optionContainer.style.display = "flex";
+};
+
+// ================= Start Quiz Flow =================
+startBtn.onclick = () => {
+  quizBox.style.display = "none";
+  ruleBox.classList.add("activeInfo");
+};
+
+continueBtn.onclick = () => {
+  ruleBox.classList.remove("activeInfo");
+  optionContainer.style.display = "flex"; // ✅ Category selection page
+};
+
+// Quit button
+quitBtn.onclick = () => location.reload();
+
+// ================= Option Category Click =================
+document.querySelector(".option-container").addEventListener("click", e => {
+  if (e.target.classList.contains("list-box")) {
+    const category = e.target.innerText.trim();
+    optionContainer.style.display = "none";
+
+    // Show relevant container
+    if (category === "Academic Subjects") academicContainer.style.display = "flex";
+    if (category === "General Knowledge") generalContainer.style.display = "flex";
+    if (category === "Technology & Programming") techContainer.style.display = "flex";
+  }
+});
+
+// ================= Academic Quiz Start =================
+document.querySelectorAll(".academic-container .card").forEach(card => {
+  card.onclick = () => {
+    const subject = card.innerText.trim();
+    startQuiz(subject);
+  };
+});
 
 // ================= Quiz Data =================
 const quizData = {
@@ -80,36 +121,23 @@ let timer;
 let timeLeft = 15;
 let answered = false;
 
-// ================= Start =================
-startBtn.onclick = () => {
-  quizBox.style.display = "none";
-  ruleBox.classList.add("activeInfo");
-};
+// ================= Functions =================
+function startQuiz(subject) {
+  currentQuiz = quizData[subject];
+  currentIndex = 0;
+  score = 0;
 
-continueBtn.onclick = () => {
-  ruleBox.classList.remove("activeInfo");
-  academicContainer.style.display = "flex";
-};
+  academicContainer.style.display = "none";
+  generalContainer.style.display = "none";
+  techContainer.style.display = "none";
+  optionContainer.style.display = "none";
+  questionPage.style.display = "flex";
 
-quitBtn.onclick = () => location.reload();
+  loadQuestion();
+  startTimer();
+}
 
-// ================= Academic Start =================
-document.querySelectorAll(".academic-container .card").forEach(card => {
-  card.onclick = () => {
-    const subject = card.innerText.trim();
-    currentQuiz = quizData[subject];
-    currentIndex = 0;
-    score = 0;
-
-    academicContainer.style.display = "none";
-    questionPage.style.display = "flex";
-
-    loadQuestion();
-    startTimer();
-  };
-});
-
-// ================= Load Question =================
+// Load question
 function loadQuestion() {
   answered = false;
   const q = currentQuiz[currentIndex];
@@ -118,12 +146,13 @@ function loadQuestion() {
   optionBoxes.forEach((box, i) => {
     box.className = "questionOptions";
     box.querySelector("span").childNodes[0].nodeValue = q.options[i];
+    box.classList.remove("correct", "wrong", "disabled");
   });
 
   questionCount.innerText = `${currentIndex + 1} of ${currentQuiz.length} questions`;
 }
 
-// ================= Option Click =================
+// Option click
 optionBoxes.forEach((box, index) => {
   box.onclick = () => {
     if (answered) return;
@@ -146,7 +175,7 @@ optionBoxes.forEach((box, index) => {
   };
 });
 
-// ================= Timer =================
+// Timer
 function startTimer() {
   clearInterval(timer);
   timeLeft = 15;
@@ -163,7 +192,7 @@ function startTimer() {
   }, 1000);
 }
 
-// ================= Next Question =================
+// Next question
 function nextQuestion() {
   clearInterval(timer);
   currentIndex++;
@@ -176,7 +205,7 @@ function nextQuestion() {
   }
 }
 
-// ================= Result =================
+// Show result
 function showResult() {
   questionPage.innerHTML = `
     <div style="padding:30px;text-align:center">
